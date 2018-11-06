@@ -10,6 +10,7 @@ import io.rong.models.response.TokenResult;
 import io.rong.models.user.UserModel;
 import io.rong.util.*;
 
+import javax.net.ssl.HttpsURLConnection;
 import java.net.HttpURLConnection;
 import java.net.URLEncoder;
 

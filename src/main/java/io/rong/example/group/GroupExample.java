@@ -19,15 +19,15 @@ public class GroupExample {
 	/**
 	 * 此处替换成您的appKey
 	 * */
-	private static final String appKey = "appKey";
+	private static final String appKey = "e0x9wycfx7flq";
 	/**
 	 * 此处替换成您的appSecret
 	 * */
-	private static final String appSecret = "appSecret";
+	private static final String appSecret = "5DD4ciMW3oE";
 	/**
 	 * 自定义api地址
 	 * */
-	private static final String api = "http://api.cn.ronghub.com";
+	private static final String api = "http://localhost:4567";
 
 	/**
 	 * 本地调用测试

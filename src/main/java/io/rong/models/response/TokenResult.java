@@ -12,6 +12,9 @@ public class TokenResult extends Result{
 	// 用户 Id，与输入的用户 Id 相同.
 	String userId;
 
+	public TokenResult() {
+	}
+
 	public TokenResult(Integer code, String token, String userId, String errorMessage) {
 		this.code = code;
 		this.token = token;

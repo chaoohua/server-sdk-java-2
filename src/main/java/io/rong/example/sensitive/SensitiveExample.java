@@ -12,11 +12,11 @@ public class SensitiveExample {
     /**
      * 此处替换成您的appKey
      * */
-    private static final String appKey = "appKey";
+    private static final String appKey = "8luwapkv8s7pl";
     /**
      * 此处替换成您的appSecret
      * */
-    private static final String appSecret = "appSecret";
+    private static final String appSecret = "lmkgpHuXezTjV2";
     /**
      * 自定义api地址
      * */
@@ -40,8 +40,8 @@ public class SensitiveExample {
                 .setType(0)
                 .setKeyword("黄赌毒")
                 .setReplace("***");
-        ResponseResult addesult = SensitiveWord.add(sentiveWord);
-        System.out.println("sentiveWord add:  " + addesult.toString());
+       // ResponseResult addesult = SensitiveWord.add(sentiveWord);
+       // System.out.println("sentiveWord add:  " + addesult.toString());
 
         /**
          *API 文档: http://www.rongcloud.cn/docs/server_sdk_api/sensitive/sensitive.html#add
@@ -52,8 +52,8 @@ public class SensitiveExample {
         sentiveWord = new SensitiveWordModel()
                 .setType(1)
                 .setKeyword("黄赌毒");
-        ResponseResult addersult = SensitiveWord.add(sentiveWord);
-        System.out.println("sentiveWord  add replace :  " + addersult.toString());
+        //ResponseResult addersult = SensitiveWord.add(sentiveWord);
+        //System.out.println("sentiveWord  add replace :  " + addersult.toString());
 
         /**
          *
@@ -71,8 +71,17 @@ public class SensitiveExample {
          *
          * */
 
-        ResponseResult removeesult = SensitiveWord.remove("money");
-        System.out.println("SensitivewordDelete:  " + removeesult.toString());
+        //ResponseResult removeesult = SensitiveWord.remove("money");
+        //System.out.println("SensitivewordDelete:  " + removeesult.toString());
+        /**
+         *
+         * API 文档: http://www.rongcloud.cn/docs/server_sdk_api/sensitive/sensitive.html#remove
+         * 移除敏感词方法（从敏感词列表中，移除某一敏感词。）
+         *
+         * */
+        String[] words = {"黄赌毒"};
+        ResponseResult batchDeletereesult = SensitiveWord.batchDelete(words);
+        System.out.println("SensitivewordBatchDelete:  " + batchDeletereesult.toString());
 
     }
 }

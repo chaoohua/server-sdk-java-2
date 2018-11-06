@@ -7,7 +7,6 @@ import java.io.*;
 import java.net.JarURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Enumeration;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
@@ -17,7 +16,7 @@ import java.util.jar.JarFile;
  * @author RongCloud
  */
 public class JsonUtil {
-    private static final String JSONFILE = JsonUtil.class.getClassLoader().getResource("jsonsource").getPath()+"/";
+    //private static final String JSONFILE = JsonUtil.class.getClassLoader().getResource("jsonsource").getPath()+"/";
 
     /**
      * 获取JsonObject
@@ -73,7 +72,7 @@ public class JsonUtil {
             url = new URL("jar:" +jarUrl);
             JarURLConnection jarURLConnection = (JarURLConnection) url.openConnection();
             JarFile jarFile = jarURLConnection.getJarFile();
-            JarEntry jarEntry = jarFile.getJarEntry("jsonsource/"+path+jsonName);
+            JarEntry jarEntry = jarFile.getJarEntry("jsonsource/" +path+jsonName);
             if (jarEntry == null) {
                 return null;
             }

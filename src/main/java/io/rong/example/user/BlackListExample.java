@@ -13,11 +13,11 @@ public class BlackListExample {
     /**
      * 此处替换成您的appKey
      * */
-    private static final String appKey = "appKey";
+    private static final String appKey = "8luwapkv8s7pl";
     /**
      * 此处替换成您的appSecret
      * */
-    private static final String appSecret = "appSecret";
+    private static final String appSecret = "lmkgpHuXezTjV2";
     /**
      * 自定义api地址
      * */

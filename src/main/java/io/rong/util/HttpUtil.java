@@ -4,10 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URL;
+import java.net.*;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 
@@ -83,7 +80,13 @@ public class HttpUtil {
 		return conn;
 	}
 
-	public static void setBodyParameter(String str, HttpURLConnection conn) throws IOException {
+	public static void setBodyParameter(String str, URLConnection conn) throws IOException {
+
+		if(conn instanceof HttpURLConnection){
+			conn = (HttpURLConnection)conn;
+		}else{
+			conn = (HttpsURLConnection)conn;
+		}
 		DataOutputStream out = new DataOutputStream(conn.getOutputStream());
 		out.write(str.getBytes("utf-8"));
 		out.flush();
@@ -107,6 +110,31 @@ public class HttpUtil {
 		conn.setConnectTimeout(30000);
 		conn.setReadTimeout(30000);
 		
+		conn.setRequestProperty(APPKEY, appKey);
+		conn.setRequestProperty(NONCE, nonce);
+		conn.setRequestProperty(TIMESTAMP, timestamp);
+		conn.setRequestProperty(SIGNATURE, sign);
+		conn.setRequestProperty("Content-Type", contentType);
+
+		return conn;
+	}
+	public static HttpsURLConnection CreatePostsHttpConnection(HostType hostType, String appKey, String appSecret, String uri,
+															 String contentType) throws MalformedURLException, IOException, ProtocolException {
+		String nonce = String.valueOf(Math.random() * 1000000);
+		String timestamp = String.valueOf(System.currentTimeMillis() / 1000);
+		StringBuilder toSign = new StringBuilder(appSecret).append(nonce).append(timestamp);
+		String sign = CodeUtil.hexSHA1(toSign.toString());
+		uri = hostType.getStrType() + uri;
+		URL url = new URL(uri);
+		HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
+		conn.setUseCaches(false);
+		conn.setDoInput(true);
+		conn.setDoOutput(true);
+		conn.setRequestMethod("POST");
+		conn.setInstanceFollowRedirects(true);
+		conn.setConnectTimeout(30000);
+		conn.setReadTimeout(30000);
+
 		conn.setRequestProperty(APPKEY, appKey);
 		conn.setRequestProperty(NONCE, nonce);
 		conn.setRequestProperty(TIMESTAMP, timestamp);
