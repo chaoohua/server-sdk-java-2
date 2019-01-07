@@ -59,7 +59,9 @@ public class Group {
 
         for (int i = 0 ; i< message.getTargetId().length; i++) {
             String child  =message.getTargetId()[i];
-            sb.append("&toGroupId=").append(URLEncoder.encode(child, UTF8));
+            if(null != child){
+                sb.append("&toGroupId=").append(URLEncoder.encode(child, UTF8));
+            }
         }
 
         sb.append("&objectName=").append(URLEncoder.encode(message.getContent().getType(), UTF8));
@@ -117,9 +119,11 @@ public class Group {
         String[] groupIds = message.getTargetId();
         for (int i = 0 ; i< groupIds.length; i++) {
             String child  = groupIds[i];
-            sb.append("&toGroupId=").append(URLEncoder.encode(child, UTF8));
-        }
+            if(null != child){
+                sb.append("&toGroupId=").append(URLEncoder.encode(child, UTF8));
 
+            }
+        }
         sb.append("&objectName=").append(URLEncoder.encode(message.getContent().getContent().getType(), UTF8));
         sb.append("&content=").append(URLEncoder.encode(message.getContent().toString(), UTF8));
 
