@@ -12,6 +12,8 @@ import io.rong.util.HttpUtil;
 
 import java.net.HttpURLConnection;
 import java.net.URLEncoder;
+import java.util.Arrays;
+
 /**
  * 发送讨论组消息方法
  *
@@ -58,7 +60,12 @@ public class Discussion {
 
         StringBuilder sb = new StringBuilder();
         sb.append("&fromUserId=").append(URLEncoder.encode(message.getSenderId().toString(), UTF8));
-        sb.append("&toDiscussionId=").append(URLEncoder.encode(message.getTargetId().toString(), UTF8));
+        for (int i = 0 ; i< message.getTargetId().length; i++) {
+            String child  = message.getTargetId()[i];
+            if(null != child){
+                sb.append("&toDiscussionId=").append(URLEncoder.encode(child, UTF8));
+            }
+        }
         sb.append("&objectName=").append(URLEncoder.encode(message.getContent().getType(), UTF8));
         sb.append("&content=").append(URLEncoder.encode(message.getContent().toString(), UTF8));
 

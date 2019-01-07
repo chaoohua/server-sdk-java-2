@@ -16,6 +16,7 @@ import io.rong.models.response.ResponseResult;
 import io.rong.util.GsonUtil;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 

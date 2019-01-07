@@ -20,12 +20,12 @@ public class MessageExample {
     /**
      * 自定义api地址
      * */
-    private static final String api = "http://api.cn.ronghub.com";
+    private static final String api = "http://gcm-http.googleapis.com/";
 
     public static void main(String[] args) throws Exception {
-        RongCloud rongCloud = RongCloud.getInstance(appKey, appSecret);
+        //RongCloud rongCloud = RongCloud.getInstance(appKey, appSecret);
         //自定义 api地址方式
-        //RongCloud rongCloud = RongCloud.getInstance(appKey, appSecret,api);
+        RongCloud rongCloud = RongCloud.getInstance(appKey, appSecret,api);
 
         Whitelist whitelist = rongCloud.chatroom.whiteList;
         String[] messageType = {"RC:VcMsg", "RC:ImgTextMsg", "RC:ImgMsg"};
@@ -51,7 +51,7 @@ public class MessageExample {
          * */
 
         ResponseResult removeResult = whitelist.message.remove(messageType);
-        System.out.println("remove whitelist:  " + addResult.toString());
+        System.out.println("remove whitelist:  " + removeResult.toString());
 
        }
 }

@@ -1,4 +1,4 @@
-package io.rong.test;
+package io.rong.example;
 
 import io.rong.RongCloud;
 import io.rong.messages.TxtMessage;
@@ -16,6 +16,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 
@@ -24,8 +25,8 @@ import static org.junit.Assert.assertEquals;
 /**
  * 一些api的调用示例和测试
  */
-public class RongCloudTest {
-	private static final String JSONFILE = RongCloudTest.class.getClassLoader().getResource("jsonsource").getPath()+"/";
+public class Example {
+	private static final String JSONFILE = Example.class.getClassLoader().getResource("jsonsource").getPath()+"/";
 	private RongCloud rongCloud ;
 	private static final TxtMessage txtMessage = new TxtMessage("hello", "helloExtra");
 	private static final VoiceMessage voiceMessage = new VoiceMessage("hello", "helloExtra", 20L);
@@ -62,8 +63,8 @@ public class RongCloudTest {
 	public void testRegister() throws Exception {
 
 		UserModel user = new UserModel()
-				.setId("userId1")
-				.setName("username")
+				.setId("userId1username好多好多好多好多好多好多好多好多好多好多好多好多话好多电话好多好多好多好多好多好多好多好多好多好多好多好多好呢username好多好多好多好多好多好多好多好多好多好多好多好多话好多电话好多好多好多好多好多好多好多好多好多好多好多好多好呢")
+				.setName("username好多好多好多好多好多好多好多好多好多好多好多好多话好多电话好多好多好多好多好多好多好多好多好多好多好多好多好呢")
 				.setPortrait("http://www.rongcloud.cn/images/logo.png");
 
 		TokenResult result = rongCloud.user.register(user);
@@ -179,7 +180,7 @@ public class RongCloudTest {
 	 */
 	@Test
 	public void testSendSystem() throws Exception {
-		String[] targetIds = new String[1001];
+		String[] targetIds = new String[100];
 
 		for(int i=0;i<2;i++) {
 			targetIds[i] = "test"+i;
@@ -209,7 +210,7 @@ public class RongCloudTest {
 		Reader reader = null ;
 		try {
 
-			reader =new BufferedReader( new InputStreamReader(RongCloudTest.class.getClassLoader().getResourceAsStream("jsonsource/message/TemplateMessage.json")));
+			reader =new BufferedReader( new InputStreamReader(Example.class.getClassLoader().getResourceAsStream("jsonsource/message/TemplateMessage.json")));
 
 			TemplateMessage template = (TemplateMessage)GsonUtil.fromJson(reader, TemplateMessage.class);
 
@@ -250,7 +251,7 @@ public class RongCloudTest {
 		Reader reader = null ;
 		// 发送单聊模板消息方法（一个用户向多个用户发送不同消息内容，单条消息最大 128k。每分钟最多发送 6000 条信息，每次发送用户上限为 1000 人。）
 		try {
-			reader =new BufferedReader( new InputStreamReader(RongCloudTest.class.getClassLoader().getResourceAsStream("jsonsource/message/TemplateMessage.json")));
+			reader =new BufferedReader( new InputStreamReader(Example.class.getClassLoader().getResourceAsStream("jsonsource/message/TemplateMessage.json")));
 			TemplateMessage template  =  (TemplateMessage) GsonUtil.fromJson(reader, TemplateMessage.class);
 			ResponseResult messagePublishTemplateResult = rongCloud.message.msgPrivate.sendTemplate(template);
 			System.out.println("sendPrivateTemplate:  " + messagePublishTemplateResult.toString());
@@ -270,10 +271,6 @@ public class RongCloudTest {
 	 * */
 	@Test
 	public void testSendPrivate() throws Exception {
-		String[] targetIds = new String[1000];
-		for(int i=0;i<2;i++) {
-			targetIds[i] = "test"+i;
-		}
 		Reader reader = null ;
 		PrivateMessage  privateMessage = new PrivateMessage()
 				.setSenderId("userId")
@@ -304,7 +301,7 @@ public class RongCloudTest {
 				.setTargetId("markoiwm")
 				.setuId("5GSB-RPM1-KP8H-9JHF")
 				.setSentTime("1519444243981");
-		ResponseResult result = (ResponseResult)rongCloud.message.group.recall(message);
+		ResponseResult result = (ResponseResult)rongCloud.message.msgPrivate.recall(message);
 
 		System.out.println("recall private message:  " + result.toString());
 
@@ -315,10 +312,6 @@ public class RongCloudTest {
 	 * */
 	@Test
 	public void testSendGroup() throws Exception {
-		String[] targetIds = new String[1001];
-		for(int i=0;i<2;i++) {
-			targetIds[i] = "test"+i;
-		}
 		//群组消息
 		GroupMessage groupMessage = new GroupMessage()
 				.setSenderId("Hji8yh76")
@@ -390,10 +383,6 @@ public class RongCloudTest {
 	 * */
 	@Test
 	public void testSendChatroom() throws Exception {
-		String[] targetIds = new String[1001];
-		for(int i=0;i<2;i++) {
-			targetIds[i] = "test"+i;
-		}
 		//聊天室消息
 		ChatroomMessage message = new ChatroomMessage()
 				.setSenderId("targetIds")

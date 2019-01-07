@@ -7,7 +7,7 @@
       },
       "typeof": {
         "type": "object",
-        "invalid": "20006"
+        "invalid": "20001"
       }
     },
     "senderId": {
@@ -33,7 +33,7 @@
       },
       "typeof": {
         "type": "array",
-        "invalid": "20006"
+        "invalid": "20001"
       }
     },
     "objectName": {
@@ -62,7 +62,7 @@
       },
       "typeof": {
         "type": "object",
-        "invalid": "20006"
+        "invalid": "20001"
       }
     },
     "senderId": {
@@ -88,7 +88,7 @@
       },
       "typeof": {
         "type": "array",
-        "invalid": "20006"
+        "invalid": "20001"
       }
     },
     "objectName": {
@@ -117,7 +117,7 @@
       },
       "typeof": {
         "type": "object",
-        "invalid": "20006"
+        "invalid": "20001"
       }
     },
     "senderId": {
@@ -143,7 +143,7 @@
       },
       "typeof": {
         "type": "array",
-        "invalid": "20006"
+        "invalid": "20001"
       }
     },
     "objectName": {
@@ -172,7 +172,7 @@
       },
       "typeof": {
         "type": "object",
-        "invalid": "20006"
+        "invalid": "20001"
       }
     },
     "senderId": {
@@ -198,7 +198,7 @@
       },
       "typeof": {
         "type": "array",
-        "invalid": "20006"
+        "invalid": "20001"
       }
     },
     "objectName": {
@@ -227,7 +227,7 @@
       },
       "typeof": {
         "type": "object",
-        "invalid": "20006"
+        "invalid": "20001"
       }
     },
     "senderId": {
@@ -253,7 +253,7 @@
       },
       "typeof": {
         "type": "array",
-        "invalid": "20006"
+        "invalid": "20001"
       }
     },
     "objectName": {
@@ -274,7 +274,7 @@
       }
     }
   },
-  "recallInfo": {
+  "recallMessage": {
     "_self": {
       "require": {
         "must": true,
@@ -282,7 +282,7 @@
       },
       "typeof": {
         "type": "object",
-        "invalid": "20006"
+        "invalid": "20001"
       }
     },
     "senderId": {
@@ -296,12 +296,6 @@
         "invalid": "20003"
       }
     },
-    "conversationType": {
-      "require": {
-        "must": true,
-        "invalid": "20005"
-      }
-    },
     "targetIds": {
       "require": {
         "must": true,
@@ -313,7 +307,7 @@
         "invalid": "20003"
       }
     },
-    "messageUid": {
+    "uId": {
       "require": {
         "must": true,
         "invalid": "20005"

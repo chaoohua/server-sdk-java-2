@@ -90,32 +90,6 @@ public class HttpUtil {
 		out.close();
 	}
 
-	public static HttpsURLConnection CreatePostHttpsConnection(HostType hostType, String appKey, String appSecret, String uri,
-															 String contentType) throws MalformedURLException, IOException, ProtocolException {
-		String nonce = String.valueOf(Math.random() * 1000000);
-		String timestamp = String.valueOf(System.currentTimeMillis() / 1000);
-		StringBuilder toSign = new StringBuilder(appSecret).append(nonce).append(timestamp);
-		String sign = CodeUtil.hexSHA1(toSign.toString());
-		uri = hostType.getStrType() + uri;
-		URL url = new URL(uri);
-		HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
-		conn.setUseCaches(false);
-		conn.setDoInput(true);
-		conn.setDoOutput(true);
-		conn.setRequestMethod("POST");
-		conn.setInstanceFollowRedirects(true);
-		conn.setConnectTimeout(30000);
-		conn.setReadTimeout(30000);
-
-		conn.setRequestProperty(APPKEY, appKey);
-		conn.setRequestProperty(NONCE, nonce);
-		conn.setRequestProperty(TIMESTAMP, timestamp);
-		conn.setRequestProperty(SIGNATURE, sign);
-		conn.setRequestProperty("Content-Type", contentType);
-
-		return conn;
-	}
-
 	public static HttpURLConnection CreatePostHttpConnection(HostType hostType, String appKey, String appSecret, String uri,
 			String contentType) throws MalformedURLException, IOException, ProtocolException {
 		String nonce = String.valueOf(Math.random() * 1000000);
@@ -132,6 +106,7 @@ public class HttpUtil {
 		conn.setInstanceFollowRedirects(true);
 		conn.setConnectTimeout(30000);
 		conn.setReadTimeout(30000);
+		
 		conn.setRequestProperty(APPKEY, appKey);
 		conn.setRequestProperty(NONCE, nonce);
 		conn.setRequestProperty(TIMESTAMP, timestamp);
