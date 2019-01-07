@@ -68,17 +68,17 @@ RongCloud IM Server SDK in Java.
 
 ## 示例
 
-###### [用户模块示例](./src/main/java/io/rong/example/user)
+###### [用户模块示例](src/main/java/io/rong/example/user)
 
-###### [消息模块示例](./src/main/java/io/rong/example/message/MessageExample.java)
+###### [消息模块示例](src/main/java/io/rong/example/message/MessageExample.java)
 
-###### [群组模块示例](./src/main/java/io/rong/example/group)
+###### [群组模块示例](src/main/java/io/rong/example/group)
 
-###### [聊天室模块示例](./src/main/java/io/rong/example/chatroom/)
+###### [聊天室模块示例](src/main/java/io/rong/example/chatroom/)
 
-###### [会话模块示例](./src/main/java/io/rong/example/conversation/ConversationExample.java)
+###### [会话模块示例](src/main/java/io/rong/example/conversation/ConversationExample.java)
 
-###### [敏感词模块示例](./src/main/java/io/rong/example/sensitive/SensitiveExample.java)
+###### [敏感词模块示例](src/main/java/io/rong/example/sensitive/SensitiveExample.java)
 
 
 # 版本说明
